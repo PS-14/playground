@@ -27,7 +27,7 @@ public class KClosest {
         int j = index;
         int count=1;
         while (count < K) {
-            if (Math.abs(arr[i-1] - X) > Math.abs(arr[j+1] - X) && j + 1 < arr.length) {
+            if (Math.abs(arr[i-1] - X) >= Math.abs(arr[j+1] - X) && j + 1 < arr.length) {
                 j++;
             } else if (Math.abs(arr[i-1] - X) < Math.abs(arr[j+1] - X) && i - 1 > 0) {
                 i--;
