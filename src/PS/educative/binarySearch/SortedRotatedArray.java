@@ -1,4 +1,4 @@
-package PS.leetcode;  
+package PS.educative.binarySearch;
   /*   
    Bluemoon
    11/07/21 1:37 AM  
