@@ -4,7 +4,7 @@ package DailyPractise;
    17/06/21 9:39 AM  
    */
 
-import common.Node;
+import common.TreeNodeNext;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,17 +12,17 @@ import java.util.Queue;
 public class PopulateNextRightPointer {
 
 
-    public Node connect(Node root) {
+    public TreeNodeNext connect(TreeNodeNext root) {
         if (root == null) {
             return root;
         }
-        Queue<Node> queue = new LinkedList<>();
+        Queue<TreeNodeNext> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            Node prev = null;
+            TreeNodeNext prev = null;
             for (int i = 0; i < size; i++) {
-                Node current = queue.poll();
+                TreeNodeNext current = queue.poll();
                 if (prev != null) {
                     prev.next = current;
                 }

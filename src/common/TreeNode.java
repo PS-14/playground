@@ -16,4 +16,19 @@ public class TreeNode {
         sb.append('}');
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof TreeNode)) return false;
+
+        TreeNode treeNode = (TreeNode) object;
+
+        return val == treeNode.val;
+    }
+
+    @Override
+    public int hashCode() {
+        return val;
+    }
 }

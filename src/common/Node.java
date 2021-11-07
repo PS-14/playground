@@ -1,19 +1,28 @@
 package common;  
   /*   
    Bluemoon
-   17/06/21 9:40 AM  
+   10/08/21 4:27 PM  
    */
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Node {
     public int val;
-    public Node left;
-    public Node right;
-    public Node next;
+    public List<Node> children;
+
 
     public Node() {
+        children = new ArrayList<Node>();
     }
 
     public Node(int _val) {
         val = _val;
+        children = new ArrayList<Node>();
+    }
+
+    public Node(int _val, ArrayList<Node> _children) {
+        val = _val;
+        children = _children;
     }
 }
