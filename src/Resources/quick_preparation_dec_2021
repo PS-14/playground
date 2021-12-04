@@ -1,0 +1,74 @@
+
+linkedlist (4)
+- reverse recursive
+- next random pointer
+- loop in ll
+- intersection point
+
+array (11)
+- kadane algo
+- gas station
+- sort 0,1,2
+- search in sorted rotated array variation (pivot)
+- rearrange + and -ve
+- trapping rain water (all variant)
+- meeting room all variation
+- rotate image 90 degree
+- spiral matrix
+- nuts and bolts
+- first non repeating character
+
+implementation(1)
+- lru
+-
+
+DP (9)
+- stock buy sell all variation
+- house robber all variation
+- knapsack
+- decoded ways
+- jump game
+- rod cutting
+- coin change
+- word break
+- longest palindrom subsequence
+
+stack/queue:(5)
+ - balance bracket
+ - max part which is balanced
+ - next greater element
+ - stack using queue/ queue using stack
+ - min stack
+
+
+
+tree (9)
+- diameter
+- lca
+- right view
+- mirror
+- burn tree min time
+- serialization and deserialisation
+- inorder/preorder/post order iterative
+- trie
+- cousin node
+
+
+graph: (6)
+- dijekstra
+- prims
+- cycle
+- union find
+- valid tree
+- clone
+- snake ladder game
+
+heap:(2)
+- running median
+- k largest
+
+backtracking (1)
+- nqueen
+
+
+
