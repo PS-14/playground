@@ -1,0 +1,100 @@
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/**
+
+There is a rooted tree (rooted at 1) and the edges can be of 2 colors : Red or Blue.
+
+Goal : Color all of the edges to Red
+
+Operation : Select any node and color all the edges on path to root as red
+
+
+     1
+  B/  \R
+   2   3
+
+     1
+   B/ \R
+   2   3
+ B/  \B
+  4   5
+
+ Ans => 2
+
+ TreeNode{
+     int val;
+     Character color;
+     List<TreeNode>childs;
+     public(int val,char ch){
+     this.val=val;
+     color=ch;
+     childs=new ArrayList<>();
+     }
+ }
+
+ Find min number of ops to color whole tree as Red
+
+ */
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+
+
+  private ExecutorService THREAD_POOL=Executors.newFixedThreadPool(5);
+
+  private int getOpertaions(TreeNode root){
+    if(root==null){
+      return 0;
+    }
+    Map<TreeNode,Future<Integer>>futureTreeNodeMap=new HashMap<>();
+    int count=0;
+    for(TreeNode child:root.childs){
+      Future<Integer>futureResult=THREAD_POOL.submit(()->{
+        return util(child);
+      });
+    }
+    futureTreeNodeMap.keySet().stream().foreach(key->{
+      count=count+futureTreeNodeMap.get(key).get();
+    });
+    return count;
+
+  }
+
+  private int util(TreeNode root){
+    if(root==null){
+       return 0;
+     }
+    int count=0;
+    for(TreeNode child:root.childs){
+      count=count+util(child);
+    }
+    if(count>0){
+      return count;
+    }
+    return root.color=='B'?1:0;
+  }
+
+
+
+  public static void main(String[] args) {
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java " + Runtime.version().feature());
+
+    for (String string : strings) {
+      System.out.println(string);
+    }
+  }
+}

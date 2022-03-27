@@ -1,0 +1,132 @@
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+
+
+// 1                            Cloud Computing is booming in the market
+
+// 2                            I am going to introduce what is Cloud Monitoring in following
+//                               paragraphs. I have been working in cloud industry for 10 years.
+
+// 3                           Scientist has investigated Venus Monitoring Camera images and try to
+//                              identify the possibility of bacteria living in cloud tops.
+    c
+    /\
+    l o
+    /
+    o
+    /
+    d
+
+// List<Long> search(String word)
+
+// For example,
+// search(“cloud”) -> [1, 2, 3]
+// search(“monitoring”) -> [2, 3]
+
+// Part 2
+// List<DocID> search(String phrase)
+
+// For example,
+// search (“cloud monitoring”) -> [2]
+
+cloud -> docId,inde
+monitoring
+
+
+// Approach 1:
+
+// Map<String,List<Long>>map=new HashMap<>();
+// String-> single word in lowercase
+// List<Long> all doc id in which this word exist
+
+// precompute thsi map by processing each documents
+
+TrieNode{
+  Map<Chacater,TrieNode>child;
+  boolean isWord;
+  Map<Long,List<Integer>>docIdIndexMap;
+
+  public TrieNode(){
+     this.child=new HashMap<>();
+     this.
+
+  }
+  public TrieNode(){
+    this.child=new HashMap<>();
+    this.
+
+  }
+}
+
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+
+  private Map<String,List<Long>>wordDocIdsMap;
+
+  public Solution(List<String>docs){
+    wordDocIdsMap=new HashMap<String,List<Long>>();
+    preprocess(docs);
+  }
+  private void preprocess(List<String>docs){
+      if(docs==null||docs.size()<1){
+        return ;
+      }
+     long docId=0;
+     for(String doc:docs){
+        docId++;
+       if(doc==null||doc.length()<1){
+         continue;
+       }
+       String[]words=doc.split(" ");
+       for(String word:words){
+         String key=word.toLowerCase();
+         if(!wordDocIdsMap.containsKey(key)){
+           wordDocIdsMap.put(key,new ArrayList<>());
+         }
+         if(wordDocIdsMap.get(key).contains(docId)){
+           continue;
+         }
+         wordDocIdsMap.get(key).add(docId);
+       }
+     }
+  }
+
+public List<Long> search(String word){
+  if(word==null||word.length()<1){
+    return new ArrayList<>();
+  }
+  String key=word.toLowerCase();
+  if(wordDocIdsMap.containsKey(key)){
+    return wordDocIdsMap.get(key);
+  }
+  return new ArrayList<>();
+}
+
+
+
+
+  public static void main(String[] args) {
+    List<String> strings = new ArrayList<String>();
+    strings.add("Cloud Computing is booming in the market");
+    strings.add("I am going to introduce what is Cloud Monitoring in following paragraphs. I have been working in cloud industry for 10 years.");
+
+    strings.add("Scientist has investigated Venus Monitoring Camera images and try to identify the possibility of bacteria living in cloud tops");
+
+
+    Solution sol=new Solution(strings);
+    System.out.println(sol.search("cloud"));
+    System.out.println(sol.search("monitoring"));
+  }
+}

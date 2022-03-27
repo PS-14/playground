@@ -6,21 +6,21 @@ linkedlist (4)
 - intersection point
 
 array (11)
-- kadane algo
+- kadane algo done
 - gas station
 - sort 0,1,2
 - search in sorted rotated array variation (pivot)
 - rearrange + and -ve
-- trapping rain water (all variant)
-- meeting room all variation
-- rotate image 90 degree
+- trapping rain water (all variant) done
+- meeting room all variation done
+- rotate image 90 degree   done
 - spiral matrix
 - nuts and bolts
 - first non repeating character
+- median of two sorted array
 
 implementation(1)
 - lru
--
 
 DP (9)
 - stock buy sell all variation
@@ -29,20 +29,24 @@ DP (9)
 - decoded ways
 - jump game
 - rod cutting
-- coin change
+- coin change all variation done
 - word break
-- longest palindrom subsequence
+- longest palindrome subsequence
+-
 
 stack/queue:(5)
+
  - balance bracket
  - max part which is balanced
  - next greater element
  - stack using queue/ queue using stack
  - min stack
+ -
 
 
 
 tree (9)
+
 - diameter
 - lca
 - right view
@@ -65,7 +69,7 @@ graph: (6)
 
 heap:(2)
 - running median
-- k largest
+- k largest    done
 
 backtracking (1)
 - nqueen

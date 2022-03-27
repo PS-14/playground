@@ -1,0 +1,165 @@
+/* executor - executes tasks
+
+
+Task(id: int, requiredTasks: List<Task>) {
+  def execute() {
+  }
+}
+
+
+t1 = new Task(1, [])
+t2 = new Task(2, [t1, t3])
+t3 = new Task(3, [t4])
+t4 = new Task(4, [])
+
+      t2
+     t3  t1
+    t4
+    
+    
+level1: t1, t4
+
+t1->t2
+t3->
+
+[t1,t2,t3]
+
+t3, t1, t2
+t1, t3, t2
+
+
+
+t3,t1-> t2,t4->
+
+t3,t1->t2
+
+t3->t2
+
+t1->t2
+
+incomingEdges
+
+t3->0
+t1->0
+t2->2
+
+Queue<>
+
+
+
+
+
+*/
+/*
+ * Click `Run` to execute the snippet below!
+ */
+
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+
+class Solution {
+   ExecutorService THREAD_POOL;
+  
+  public Solution(){
+    THREAD_POOL=Executors.newFixedThreadPool(10);
+  }
+  
+  private static executeTasks(List<Task>tasks){
+     Map<Integer,Task>taskIdMap=new HashMap<>();
+     Map<Integer,Integer>incomingEdges=new HashMap<>();
+     Map<Integer,List<Integer>>graph=populateGraphAndIncomingEdges(tasks,incomingEdges,taskIdMap);
+     Queue<Integer>queue=getTasks(incomingEdges);
+     Map<Integer,List<Task>>output=new HashMap<>();
+    int level=0;
+     while(!queue.isEmpty()){
+         int size=queue.size();
+         level++;
+       for(int i=0;i<size;i++){
+         int id=queue.poll();
+         Task current=taskIdMap.get(id);
+         if(!output.containsKey(level)){
+           output.put(level,new ArrayList<>());
+         }
+         output.get(level).add(current);
+         for(int dependent:graph.get(id)){
+              incomingEdges.put(dependent,incomingEdges.get(dependent)-1);
+              if(incomingEdges.get(dependent)==0){
+                 queue.add(dependent);
+              }
+         }
+       }
+     }
+    int outputSize=output.size();
+    for(int j=1;j<=outputSize;j++){
+      Map<Integer,Future<String>>responseMap=new HashMap<>();
+      List<Task>tasks=output.get(j);
+      tasks.foreach(task->{
+      Future<String>fututre=THREAD_POOL.submit(()->{
+        task.execute();
+      });
+        responseMap.put(task.id,fututre);  
+      }
+      while(!responseMap.isEmpty){
+         responseMap.keySet().filter()
+      }
+                  
+      //               
+                    
+    }
+    
+  }
+}                   
+
+private void populateGraphAndIncomingEdges(List<Tasks>tasks,Map<Integer,Integer>incomingEdges,Map<Integer,Task>taskIdMap){
+  Map<Integer,List<Integer>>graph=new HashMap<>();
+  for(Task task:tasks){
+       if(!taskIdMap.containsKey(task.id)){
+         taskIdMap.put(id,task);
+       }
+       if(!incomingEdges.containsKey(task.id)){
+         incomingEdges.put(id,0);
+       }
+      if(graph.containsKey(task.id)){
+        garph.put(task.id,new ArrayList<>());
+      }
+     for(Task neigh:task.tasks){
+        
+     }
+  }
+}
+                    
+ private void intialize(Map<Integer,Integer>incomingEdges,Map<Integer,Task>taskIdMap)                   
+  
+  
+  
+  public static void main(String[] args) {
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java " + Runtime.version().feature());
+
+    for (String string : strings) {
+      System.out.println(string);
+    }
+  }
+  private static class Task Implements Thread{
+    int id;
+    List<Task> tasks;
+    public Task(int id,List<Task>tasks){
+      this.id=id;
+      this.tasks=tasks;
+    }
+    
+    public void execute(){
+      return "task with id: "+id +"excuted";
+    }
+  }
+}

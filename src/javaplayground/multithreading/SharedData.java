@@ -1,4 +1,4 @@
-package java.multithreading;  
+package javaplayground.multithreading;
   /*   
    Bluemoon
    09/08/21 11:02 AM  
