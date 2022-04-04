@@ -51,7 +51,8 @@ public class NthUglyNumber {
 
     public static void main(String[] args) {
         NthUglyNumber nthUglyNumber = new NthUglyNumber();
-        System.out.println(nthUglyNumber.nthUglyNumber(1000000000, 2, 217983653, 336916467));
+        System.out.println(nthUglyNumber.nthUglyNumber(12, 2, 3, 5));
+        /*System.out.println(nthUglyNumber.nthUglyNumber(1000000000, 2, 217983653, 336916467));*/
     }
 }
 

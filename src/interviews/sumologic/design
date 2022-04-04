@@ -1,0 +1,111 @@
+
+Resource Mgmt System
+- reserve
+- release
+
+ex:
+
+- u1, g1 -- reserve -- r90
+- u2, g2 -- reserve -- r21
+
+- u5, g1 -- reserve -- r90
+
+- u6, g6 -- reserve -- r50
+
+- u10, g2 -- reserve -- r21
+...
+
+- u6, g6 --> release --> (r50) pool
+- u11, g11 -- reserve -- r50/r100..
+
+- u5, g1 --> release --> no-op
+- u1, g1 --> release --> (r90) pool
+
+- u2, g2 --> release --> no-op
+- u10, g2 --> release --> (r21) pool
+...
+
+
+
+- reserve
+   1) validate the request. -> jwt  token
+   2) user group validation
+   3) check if any entry present in reserved resouces for given groupId
+   4) if yes -> allocate same resource to this user and save in reserved resouces;
+   5) if no allocate any random resource from the unreserved pool and create entry in reserved resouces;
+   6)
+
+=============================
+Entities
+
+user
+group
+Resource
+
+
+resourceService
+-add resource
+- reserve
+- release
+
+centralized place
+- 1) db ...
+- 2) cache redis aerospike
+ avaialble->{List<resources>}
+-
+
+in memory pool{
+
+}
+
+resources
+{
+  id // pk
+  status  int 0,1,2
+}
+
+
+unreserved resources  // data is finite
+r50
+r21
+r90
+
+}
+
+reserved resources.
+             userid pk
+ userid
+ groupid. // index
+ resouces id
+
+ u1 g1 reserve
+
+ u1 g1 r50
+
+ ##### u5 g1  r50
+
+ g1-> u5,u1
+
+ g1-> u1. r50
+
+transactional block
+ ->  userid
+ ->  userId delete resources
+ -> count query groupId
+
+ g1, u1 release
+
+ delete entry
+
+
+
+
+
+
+
+
+
+
+
+
+
