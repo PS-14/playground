@@ -29,7 +29,6 @@ public class TaskScheduler {
         }
         Queue<CharFreq> queue = new LinkedList<>();
         int result = 0;
-        String output = "";
         while (!pq.isEmpty() || !queue.isEmpty()) {
             if (!pq.isEmpty()) {
                 CharFreq temp = pq.poll();
@@ -38,16 +37,14 @@ public class TaskScheduler {
                 if (temp.count > 0) {
                     queue.add(temp);
                 }
-                output = output + temp.ch + "_";
-            } else {
-                output = output + "idle_";
+
             }
-            if (!queue.isEmpty() && (result - queue.peek().index >= n)) {
+            if (!queue.isEmpty() && (result - queue.peek().index == n)) {
                 pq.add(queue.poll());
             }
             result++;
         }
-        System.out.println(output);
+
         return result;
     }
 
